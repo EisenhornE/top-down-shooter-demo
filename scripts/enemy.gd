@@ -12,7 +12,6 @@ func movement():
 		var player_position = player.position
 		var target_position = (player_position - position).normalized()
 		velocity = target_position * move_speed
-		print(target_position)
 		move_and_slide()
 	else:
 		print("Player node not found")

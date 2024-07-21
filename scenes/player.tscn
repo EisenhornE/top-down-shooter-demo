@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjl8jxuslmq7f"]
+[gd_scene load_steps=6 format=3 uid="uid://bjl8jxuslmq7f"]
 
 [ext_resource type="Texture2D" uid="uid://4vbeeixh68pp" path="res://icon.svg" id="1_iq3io"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_olyvg"]
+[ext_resource type="PackedScene" uid="uid://utolpcej56cq" path="res://scenes/gun.tscn" id="3_n66d0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7yxj1"]
 size = Vector2(32, 30)
@@ -23,3 +24,5 @@ shape = SubResource("RectangleShape2D_7yxj1")
 
 [node name="hitbox_coll" type="CollisionShape2D" parent="hitbox_area"]
 shape = SubResource("RectangleShape2D_5ud3l")
+
+[node name="gun" parent="." instance=ExtResource("3_n66d0")]

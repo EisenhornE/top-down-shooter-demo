@@ -1,13 +1,11 @@
 extends CharacterBody2D
 
 @export var speed = 400
+@onready var gun = $gun
 
 func _physics_process(delta):
 	movement()
-	aim_and_shoot()
-
-#TODO 
-#Instantiate I guess then we go spawning enemies biatch HEHEHE
+	aim()
 
 func movement():
 	#Movement
@@ -29,7 +27,7 @@ func movement():
 		velocity = Vector2.ZERO
 	
 	move_and_slide()
-func aim_and_shoot():
+func aim():
 	#Aim and Shoot
 	var mouse_position = get_global_mouse_position()
 	look_at(mouse_position)

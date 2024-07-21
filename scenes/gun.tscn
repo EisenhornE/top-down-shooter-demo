@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://utolpcej56cq"]
+
+[ext_resource type="Texture2D" uid="uid://4vbeeixh68pp" path="res://icon.svg" id="1_00gwg"]
+[ext_resource type="Script" path="res://scripts/gun.gd" id="2_25ct2"]
+[ext_resource type="PackedScene" uid="uid://diaeb0vjxlmlh" path="res://scenes/bullet.tscn" id="3_jqbor"]
+
+[node name="gun" type="Sprite2D"]
+position = Vector2(58, 0)
+scale = Vector2(0.203, 0.2)
+texture = ExtResource("1_00gwg")
+script = ExtResource("2_25ct2")
+bullet_scene = ExtResource("3_jqbor")
+
+[node name="muzzle" type="Marker2D" parent="."]
+position = Vector2(64.0395, 0)
+scale = Vector2(0.203, 0.2)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_right = 3.92969
+anchor_bottom = 4.09375
+offset_left = -64.0
+offset_top = -66.0
+offset_right = 64.0
+offset_bottom = 65.0
+scale = Vector2(0.203, 0.2)
+color = Color(0.0392157, 0.0392157, 0.0392157, 0.486275)
+metadata/_edit_use_anchors_ = true

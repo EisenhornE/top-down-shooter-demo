@@ -7,11 +7,9 @@ extends Node2D
 # PROJECT SETTINGS -> ENVIRONMENT FOR WHITE BACKGROUND
 
 func _on_spawn_timer_timeout():
-	print("Timeout")
 	var enemy = enemy_scene.instantiate()
 	var enemy_spawn_location = %enemy_spawn_point
 	enemy_spawn_location.progress_ratio = randf()
 	enemy.position = enemy_spawn_location.position
 	enemy.player = player
 	add_child(enemy)
-	print("Enemy spawn loc @: ", enemy.position)
