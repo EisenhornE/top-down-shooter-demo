@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_mn7ca"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 25, 27, 0, 0, 0, 0, 1333, 27, 0, 0, 0, 0, 1341, 737, 0, 0, 0, 0, 21, 733, 0, 0, 0, 0, 25, 27)
+"points": PackedVector2Array(0, 0, 0, 0, -31, -19, 0, 0, 0, 0, 1396, -25, 0, 0, 0, 0, 1409, 811, 0, 0, 0, 0, -29, 791, 0, 0, 0, 0, -29, -17)
 }
 point_count = 5
 
@@ -17,20 +17,23 @@ script = ExtResource("1_kvnfe")
 enemy_scene = ExtResource("2_g5nh4")
 
 [node name="spawn_timer" type="Timer" parent="gameManager"]
-wait_time = 4.0
-autostart = true
+
+[node name="reduce_spawn_timer" type="Timer" parent="gameManager"]
+wait_time = 5.0
 
 [node name="player" parent="." instance=ExtResource("1_bwj20")]
 position = Vector2(585, 313)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(577, 324)
+position = Vector2(683, 386)
 
 [node name="enemy_spawn" type="Path2D" parent="."]
 curve = SubResource("Curve2D_mn7ca")
 
 [node name="enemy_spawn_point" type="PathFollow2D" parent="enemy_spawn"]
 unique_name_in_owner = true
-position = Vector2(25, 27)
+position = Vector2(-31, -19)
+rotation = -0.0042046
 
 [connection signal="timeout" from="gameManager/spawn_timer" to="gameManager" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="gameManager/reduce_spawn_timer" to="gameManager" method="_on_reduce_spawn_timer_timeout"]
