@@ -1,11 +1,10 @@
 extends Area2D
 
 @export var speed := 800
-@onready var player := preload("res://scenes/player.tscn")
+@onready var player := load("res://scenes/player.tscn")
 var travelled_distance := 0
 const range := 4000
 var direction := Vector2.ZERO
-@export var enemy : PackedScene
 
 func _ready():
 	pass

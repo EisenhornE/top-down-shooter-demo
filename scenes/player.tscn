@@ -26,3 +26,9 @@ shape = SubResource("RectangleShape2D_7yxj1")
 shape = SubResource("RectangleShape2D_5ud3l")
 
 [node name="gun" parent="." instance=ExtResource("3_n66d0")]
+
+[node name="damage_timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="hitbox_area" to="." method="_on_hitbox_area_body_entered"]
+[connection signal="body_exited" from="hitbox_area" to="." method="_on_hitbox_area_body_exited"]
+[connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]

@@ -4,14 +4,13 @@ extends CharacterBody2D
 @onready var gun = $gun
 @export var player_health := 100
 @export var damage_interval := 1
-@onready var damage_Timer = $damageTimer
+@onready var damage_Timer = $damage_timer
 
 var enemies_in_hitbox = []
 
 func _physics_process(delta):
 	movement()
 	aim()
-	print(player_health)
 
 func movement():
 	#Movement
@@ -38,7 +37,6 @@ func aim():
 	#Aim and Shoot
 	var mouse_position = get_global_mouse_position()
 	look_at(mouse_position)
-
 
 func _on_hitbox_area_body_entered(body):
 	if body is CharacterBody2D and body.name == "enemy":

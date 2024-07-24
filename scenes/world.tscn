@@ -1,39 +1,41 @@
 [gd_scene load_steps=5 format=3 uid="uid://cerd3su42dn8d"]
 
-[ext_resource type="PackedScene" uid="uid://bjl8jxuslmq7f" path="res://scenes/player.tscn" id="1_bwj20"]
-[ext_resource type="Script" path="res://scripts/gameManager.gd" id="1_kvnfe"]
-[ext_resource type="PackedScene" uid="uid://bkmpk20w82py7" path="res://scenes/enemy.tscn" id="2_g5nh4"]
+[ext_resource type="Script" path="res://scripts/gameManager.gd" id="1_1y0sk"]
+[ext_resource type="PackedScene" uid="uid://bkmpk20w82py7" path="res://scenes/enemy.tscn" id="2_nnwd1"]
+[ext_resource type="PackedScene" uid="uid://bjl8jxuslmq7f" path="res://scenes/player.tscn" id="3_rarfa"]
 
 [sub_resource type="Curve2D" id="Curve2D_mn7ca"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -31, -19, 0, 0, 0, 0, 1396, -25, 0, 0, 0, 0, 1409, 811, 0, 0, 0, 0, -29, 791, 0, 0, 0, 0, -29, -17)
+"points": PackedVector2Array(0, 0, 0, 0, -48, -41, 0, 0, 0, 0, 1442, -42, 0, 0, 0, 0, 1417, 805, 0, 0, 0, 0, -53, 808, 0, 0, 0, 0, -48, -41)
 }
 point_count = 5
 
 [node name="world" type="Node2D"]
 
 [node name="gameManager" type="Node2D" parent="."]
-script = ExtResource("1_kvnfe")
-enemy_scene = ExtResource("2_g5nh4")
+script = ExtResource("1_1y0sk")
+enemy_scene = ExtResource("2_nnwd1")
 
 [node name="spawn_timer" type="Timer" parent="gameManager"]
+wait_time = 4.0
+autostart = true
 
 [node name="reduce_spawn_timer" type="Timer" parent="gameManager"]
 wait_time = 5.0
 
-[node name="player" parent="." instance=ExtResource("1_bwj20")]
-position = Vector2(585, 313)
+[node name="player" parent="." instance=ExtResource("3_rarfa")]
+position = Vector2(606, 362)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(683, 386)
+position = Vector2(680, 373)
 
 [node name="enemy_spawn" type="Path2D" parent="."]
 curve = SubResource("Curve2D_mn7ca")
 
 [node name="enemy_spawn_point" type="PathFollow2D" parent="enemy_spawn"]
 unique_name_in_owner = true
-position = Vector2(-31, -19)
-rotation = -0.0042046
+position = Vector2(-48, -41)
+rotation = -0.000671141
 
 [connection signal="timeout" from="gameManager/spawn_timer" to="gameManager" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="gameManager/reduce_spawn_timer" to="gameManager" method="_on_reduce_spawn_timer_timeout"]
