@@ -2,9 +2,16 @@ extends Node2D
 
 @export var enemy_scene : PackedScene
 @onready var player = $"../player"
+@onready var spawnTimer = $spawn_timer
+@onready var reduce_spawnTimer = $reduce_spawn_timer
 
 # PLEASE REMEMBER TO PUT COLOR RECT ABOVE EVERYTHING OR JUST DELETE IT AND USE 
 # PROJECT SETTINGS -> ENVIRONMENT FOR WHITE BACKGROUND
+
+func _ready():
+	spawnTimer.wait_time = 4.0
+	spawnTimer.start()
+	reduce_spawnTimer.start()
 
 func _on_spawn_timer_timeout():
 	var enemy = enemy_scene.instantiate()
@@ -13,3 +20,9 @@ func _on_spawn_timer_timeout():
 	enemy.position = enemy_spawn_location.position
 	enemy.player = player
 	add_child(enemy)
+	spawnTimer.start()
+
+func _on_reduce_spawn_timer_timeout():
+	spawnTimer.wait_time -= 1.0
+	if spawnTimer.wait_time == 1.0:
+		reduce_spawnTimer.stop()
