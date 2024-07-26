@@ -15,8 +15,8 @@ func movement():
 		var player_position = player.position
 		var target_position = (player_position - position).normalized()
 		velocity = target_position * move_speed
-		move_and_slide()
 		look_at(player_position)
+		move_and_slide()
 	else:
 		pass
 

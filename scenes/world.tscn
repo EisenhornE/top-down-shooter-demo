@@ -37,5 +37,23 @@ unique_name_in_owner = true
 position = Vector2(-48, -41)
 rotation = -0.000671141
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 123.0
+offset_top = 26.0
+offset_right = 223.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Score: 0"
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer"]
+offset_left = 21.0
+offset_top = 26.0
+offset_right = 121.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Health: 100"
+
 [connection signal="timeout" from="gameManager/spawn_timer" to="gameManager" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="gameManager/reduce_spawn_timer" to="gameManager" method="_on_reduce_spawn_timer_timeout"]

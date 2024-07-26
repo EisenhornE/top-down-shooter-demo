@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var player_health := 100
 @export var damage_interval := 1
 @onready var damage_Timer = $damage_timer
+@onready var healthLabel = $"../CanvasLayer/HealthLabel"
 
 var enemies_in_hitbox = []
 
@@ -41,7 +42,7 @@ func aim():
 func _on_hitbox_area_body_entered(body):
 	if body is CharacterBody2D and body.name == "enemy":
 		enemies_in_hitbox.append(body)
-		player_health -= 10
+		#player_health -= 10
 		if player_health <= 0:
 			queue_free()
 		if damage_Timer.is_stopped():
@@ -55,7 +56,9 @@ func _on_hitbox_area_body_exited(body):
 
 func _on_damage_timer_timeout():
 	for enemy in enemies_in_hitbox:
-		player_health -= 5
+		player_health -= 10
+		healthLabel.text = "Health: " + str(player_health)
+		print(player_health)
 		if player_health <= 0:
 			queue_free()
 			get_tree().quit()

@@ -4,6 +4,7 @@ extends Node2D
 @onready var player = $"../player"
 @onready var spawnTimer = $spawn_timer
 @onready var reduce_spawnTimer = $reduce_spawn_timer
+@onready var scoreLabel = $"../CanvasLayer/ScoreLabel"
 var score = 0
 
 # PLEASE REMEMBER TO PUT COLOR RECT ABOVE EVERYTHING OR JUST DELETE IT AND USE 
@@ -34,5 +35,4 @@ func _on_reduce_spawn_timer_timeout():
 
 func onenemydead():
 	score += 10
-	print("Score: ", score)
-	
+	scoreLabel.text = "Score: " + str(score)
