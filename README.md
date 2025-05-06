@@ -3,3 +3,5 @@
 
 # Gameplay Video of the Demo:
 - https://youtu.be/83W1bUt5h5o
+
+06-05-2025: Don't have plans to proceed in using Godot and Game Dev in General.
